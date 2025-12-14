@@ -1,0 +1,365 @@
+@font-face {
+    font-family: SDK;
+    src: url("./sdk.ttf");
+}
+
+@font-face {
+    font-family: UBT;
+    src: url("./ubt.ttf");
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'SDK', 'UBT';
+}
+
+body {
+	background-color: #000;
+	color: #fff;
+	min-height: 100vh;
+    overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* 头部样式 */
+.top {
+	position: relative;
+	height: 70vh;
+	min-height: 500px;
+	width: 100%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.poster {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+		url("./test-wuwa.PNG") center/cover no-repeat;
+	filter: blur(2px);
+	z-index: 1;
+}
+
+.top-content {
+	position: relative;
+	z-index: 2;
+	text-align: center;
+	padding: 20px;
+}
+
+.top h1 {
+    font-family: "SDK";
+	font-size: 6rem;
+	font-weight: 800;
+	letter-spacing: 8px;
+	margin-bottom: 10px;
+	color: #fff;
+	text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.top span {
+    font-family: "UBT";
+	font-size: 1.25rem;
+	font-weight: 800;
+	margin-bottom: 20px;
+	color: #ffffffc0;
+	text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+	0% {
+		text-shadow: 0 5px 15px rgba(255, 206, 50, 0.2);
+	}
+
+	100% {
+		text-shadow: 0 5px 25px rgba(29, 99, 255, 0.4), 0 0 40px rgba(255, 206, 50, 0.2);
+	}
+}
+
+/* 内容区域样式 */
+.conta {
+	padding: 60px 5%;
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.section-title {
+	font-size: 2.5rem;
+	margin-bottom: 40px;
+	text-align: center;
+	color: #fff;
+	position: relative;
+	padding-bottom: 15px;
+}
+
+.section-title::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100px;
+	height: 4px;
+	background: linear-gradient(to right, #FFCE32, #ff9532);
+	border-radius: 2px;
+}
+
+.cards-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 30px;
+	margin-top: 30px;
+}
+
+.card {
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 15px;
+	overflow: hidden;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	height: 380px;
+	position: relative;
+	backdrop-filter: blur(5px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card:hover {
+	transform: translateY(-15px) scale(1.03);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(29, 99, 255, 0.2);
+	border-color: rgba(255, 206, 50, 0.3);
+}
+
+.card-image {
+	height: 70%;
+	overflow: hidden;
+	position: relative;
+}
+
+.card-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.8s ease;
+}
+
+.card:hover .card-image img {
+	transform: scale(1.1);
+}
+
+.card-content {
+	padding: 20px;
+	height: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.card-name {
+	font-size: 1.4rem;
+	font-weight: 700;
+	margin-bottom: 8px;
+	color: #FFCE32;
+	transition: color 0.3s;
+}
+
+.card:hover .card-name {
+	color: #1D63FF;
+}
+
+.card-about {
+    font-family: "UBT";
+    font-weight: bold;
+    letter-spacing: .08rem;
+	font-size: 0.95rem;
+	color: rgba(255, 255, 255, 0.7);
+	line-height: 1.4;
+	opacity: 0;
+	max-height: 0;
+	overflow: hidden;
+	transition: all 0.5s ease;
+}
+
+.card:hover .card-about {
+	opacity: 1;
+	max-height: 100px;
+}
+
+/* 尾部样式 */
+.tail {
+	background-color: rgba(0, 0, 0, 0.8);
+	padding: 30px 0;
+	text-align: center;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	margin-top: 60px;
+}
+
+.tail a {
+    font-family: "UBT";
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	color: #FFCE32;
+	font-size: 1.3rem;
+    font-weight: normal;
+	text-decoration: none;
+	padding: 12px 30px;
+	border-radius: 50px;
+	background: rgba(29, 99, 255, 0.1);
+	border: 1px solid rgba(255, 206, 50, 0.2);
+	transition: all 0.4s ease;
+}
+
+.tail a:hover {
+    font-weight: bold;
+	background: rgba(255, 206, 50, 0.1);
+	color: #1D63FF;
+	border-color: rgba(29, 99, 255, 0.3);
+	transform: scale(1.05) translateY(-3px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    text-decoration: #1D63FF;
+}
+
+.tail a i {
+	font-size: 1.5rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 1100px) {
+	.cards-container {
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	}
+}
+
+@media (max-width: 768px) {
+	.top h1 {
+		font-size: 4rem;
+	}
+
+	.section-title {
+		font-size: 2rem;
+	}
+
+	.cards-container {
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		gap: 20px;
+	}
+
+	.card {
+		height: 350px;
+	}
+}
+
+@media (max-width: 576px) {
+	.top {
+		height: 60vh;
+		min-height: 400px;
+	}
+
+	.top h1 {
+		font-size: 3rem;
+		letter-spacing: 4px;
+	}
+
+	.subtitle {
+		font-size: 1.2rem;
+	}
+
+	.cards-container {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* 加载动画 */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.card {
+	animation: fadeIn 0.6s ease forwards;
+	opacity: 0;
+}
+
+.card:nth-child(2) {
+	animation-delay: 0.1s;
+}
+
+.card:nth-child(3) {
+	animation-delay: 0.2s;
+}
+
+.card:nth-child(4) {
+	animation-delay: 0.3s;
+}
+
+.card:nth-child(5) {
+	animation-delay: 0.4s;
+}
+
+.card:nth-child(6) {
+	animation-delay: 0.5s;
+}
+
+
+/* 跳转按钮样式 */
+.goto-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #FFCE32, #ff9532);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.goto-btn i {
+    font-size: 1.3rem;
+    transition: transform 0.3s ease;
+}
+
+.goto-btn:hover {
+    background: linear-gradient(135deg, #1D63FF, #3295ff);
+    color: #fff;
+    transform: translateY(20px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(29, 99, 255, 0.4);
+}
+
+.goto-btn:hover i {
+    transform: translateX(3px);
+}
+
+.card:hover .goto-btn {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
